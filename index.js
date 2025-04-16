@@ -91,7 +91,7 @@ async function sendLowPriceNotification(cheapestHourToday) {
   }
   console.log(`Sending notification for cheapest hour today: ${cheapestHourToday.startsAt}`);
   const title = "Lage Prijs Alert!";
-  const message = `De stroomprijs is nu het laagst vandaag: ${cheapestHourToday.total} EUR/kWh. Start om: ${new Date(cheapestHourToday.startsAt).toLocaleTimeString('nl-NL')}`;
+  const message = `De stroomprijs is nu het laagst vandaag: ${cheapestHourToday.total} EUR/kWh.`;
 
   try {
     const variables = { title, message };
@@ -162,7 +162,7 @@ async function checkPricesAndNotify() {
         console.log(`Current hour (${now.getHours()}:00) IS the cheapest hour today. Sending notification.`);
         await sendLowPriceNotification(cheapestHourToday);
     } else {
-        console.log(`Current hour (${now.getHours()}:00) is not the cheapest hour today (${cheapestHourDate.getHours()}:00). No notification sent.`);
+        console.log(`Current hour (${now.getHours()}:00) is not the cheapest hour today. No notification sent.`);
     }
 }
 
